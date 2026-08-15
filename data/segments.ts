@@ -1,0 +1,130 @@
+import { Segment, SegmentId } from "@/lib/types";
+
+// セグメント別重みマトリクス(%) — 要件定義書 5.3 / xlsx「重み付けマトリクス」シート
+export const segments: Segment[] = [
+  {
+    id: "wealthy_migration",
+    label: "富裕層移住",
+    description: "資産防衛・税制メリットを重視した移住先を探したい方向け",
+    weights: {
+      education: 0.05,
+      tax: 0.35,
+      cost: 0.05,
+      safety: 0.15,
+      climate: 0.05,
+      visaEase: 0.1,
+      jobMarket: 0,
+      english: 0.05,
+      lowJpCommunity: 0,
+      stability: 0.2,
+    },
+  },
+  {
+    id: "early_retirement",
+    label: "早期リタイア/ロングステイ",
+    description: "生活費・気候・治安のバランスを重視したセカンドライフ先を探したい方向け",
+    weights: {
+      education: 0,
+      tax: 0.1,
+      cost: 0.25,
+      safety: 0.2,
+      climate: 0.2,
+      visaEase: 0.1,
+      jobMarket: 0,
+      english: 0.05,
+      lowJpCommunity: 0,
+      stability: 0.1,
+    },
+  },
+  {
+    id: "language_study",
+    label: "語学留学",
+    description: "コストと英語環境の質を重視して留学先を探したい方向け",
+    weights: {
+      education: 0.05,
+      tax: 0,
+      cost: 0.2,
+      safety: 0.15,
+      climate: 0.05,
+      visaEase: 0.05,
+      jobMarket: 0,
+      english: 0.15,
+      lowJpCommunity: 0.25,
+      stability: 0.1,
+    },
+  },
+  {
+    id: "working_holiday",
+    label: "ワーホリ",
+    description: "就労機会と生活体験の両立を重視してワーホリ先を探したい方向け",
+    weights: {
+      education: 0,
+      tax: 0,
+      cost: 0.2,
+      safety: 0.15,
+      climate: 0.05,
+      visaEase: 0.2,
+      jobMarket: 0.25,
+      english: 0.1,
+      lowJpCommunity: 0.05,
+      stability: 0,
+    },
+  },
+  {
+    id: "overseas_job",
+    label: "海外就職",
+    description: "就労機会とキャリアアップを重視して就職先を探したい方向け",
+    weights: {
+      education: 0,
+      tax: 0.05,
+      cost: 0.1,
+      safety: 0.15,
+      climate: 0,
+      visaEase: 0.1,
+      jobMarket: 0.35,
+      english: 0.2,
+      lowJpCommunity: 0,
+      stability: 0.05,
+    },
+  },
+  {
+    id: "education_migration",
+    label: "子どもの教育移住",
+    description: "子どもの教育水準・治安を重視して移住先を探したい方向け",
+    weights: {
+      education: 0.35,
+      tax: 0.05,
+      cost: 0.15,
+      safety: 0.2,
+      climate: 0.05,
+      visaEase: 0.05,
+      jobMarket: 0,
+      english: 0.05,
+      lowJpCommunity: 0,
+      stability: 0.1,
+    },
+  },
+  {
+    id: "entrepreneur",
+    label: "起業・ビジネス移住",
+    description: "起業のしやすさ・税制・制度安定性を重視して移住先を探したい方向け",
+    weights: {
+      education: 0,
+      tax: 0.2,
+      cost: 0.1,
+      safety: 0.1,
+      climate: 0,
+      visaEase: 0.15,
+      jobMarket: 0.1,
+      english: 0.1,
+      lowJpCommunity: 0,
+      stability: 0.25,
+    },
+  },
+];
+
+export function getSegmentById(id: SegmentId): Segment {
+  const s = segments.find((seg) => seg.id === id);
+  if (!s) throw new Error(`Unknown segment: ${id}`);
+  return s;
+}
