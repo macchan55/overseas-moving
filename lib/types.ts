@@ -106,6 +106,11 @@ export interface QuestionDef {
 export type AnswerValue = string | number;
 export type AnswerMap = Record<string, AnswerValue>;
 
+// Step2/Step3の質問(条件・優先度に関する設問)共通で選べる「特にこだわらない」の回答値。
+// ハード条件フィルタの閾値マップには存在しないキーのため、判定時は自動的に足切りなし
+// (制約なし)として扱われる(lib/scoring.ts 参照)。
+export const NO_PREFERENCE = "no_preference";
+
 export interface DiagnosisInput {
   travelType: TravelType;
   segment: SegmentId;

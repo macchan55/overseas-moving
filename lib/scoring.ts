@@ -54,6 +54,11 @@ const EDU_BUDGET_CEILING_JPY: Record<string, number> = {
 
 /**
  * ハード条件(足切り)に抵触する場合、除外理由の文字列を返す。抵触しなければ null。
+ *
+ * 注: ユーザーが「特にこだわらない」(NO_PREFERENCE)を選んだ設問は、対応するレンジ
+ * マップにキーが存在しないため userFloor/userCeiling が undefined になり、自動的に
+ * その足切りをスキップする(= 制約なしとして扱う)。wh_age も同様に Number変換が
+ * NaN になり toNumber() が undefined を返すため、年齢による足切りをスキップする。
  */
 function hardFilterReason(input: DiagnosisInput, country: Country): string | null {
   const { hardFilterData } = country;
