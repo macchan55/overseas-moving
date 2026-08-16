@@ -320,6 +320,7 @@ export const step3Questions: QuestionDef[] = [
     options: [
       { value: "under_1y", label: "1年未満" },
       { value: "1_3y", label: "1〜3年" },
+      { value: "4_10y", label: "4〜10年" },
       { value: "permanent", label: "永住志向" },
     ],
   },
