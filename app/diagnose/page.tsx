@@ -11,7 +11,7 @@ export default function DiagnosePage() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <div className="mx-auto max-w-2xl px-4 py-12">
+        <div className="px-4 py-12">
           <DiagnoseFlow />
         </div>
       </main>

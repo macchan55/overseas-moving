@@ -100,7 +100,11 @@ export function DiagnoseFlow() {
   }
 
   if (result && segment) {
-    return <ResultView result={result} segment={segment} onRestart={handleRestart} />;
+    return (
+      <div className="mx-auto max-w-5xl">
+        <ResultView result={result} segment={segment} onRestart={handleRestart} />
+      </div>
+    );
   }
 
   if (!currentScreen) return null;
@@ -115,7 +119,7 @@ export function DiagnoseFlow() {
           : "Step3: 共通の条件";
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <ProgressBar current={screenIndex + 1} total={screens.length} sectionLabel={sectionLabel} />
 
       {screenIndex > 0 && (

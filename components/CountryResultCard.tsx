@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CountryResult, SegmentId } from "@/lib/types";
 import { RiskBadge } from "@/components/RiskBadge";
+import { AxisRadarChart } from "@/components/AxisRadarChart";
 
 const RANK_COLORS = ["bg-amber-500", "bg-slate-400", "bg-orange-700"];
 
@@ -41,6 +42,10 @@ export function CountryResultCard({
       </div>
 
       {country.riskFlag && <div className="mb-3">{<RiskBadge />}</div>}
+
+      <div className="mb-2">
+        <AxisRadarChart scores={country.scores} />
+      </div>
 
       <dl className="grid grid-cols-2 gap-3 text-sm mb-4">
         <div>

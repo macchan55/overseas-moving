@@ -37,6 +37,20 @@ export const AXIS_LABELS: Record<AxisKey, string> = {
   stability: "制度安定性",
 };
 
+// レーダーチャートの軸ラベル用の短縮表記
+export const AXIS_SHORT_LABELS: Record<AxisKey, string> = {
+  education: "教育",
+  tax: "税制",
+  cost: "生活費",
+  safety: "治安",
+  climate: "気候",
+  visaEase: "ビザ",
+  jobMarket: "就労",
+  english: "英語",
+  lowJpCommunity: "日本人少",
+  stability: "安定性",
+};
+
 // 目的セグメント(Step1) — 要件定義書 2.2
 export type SegmentId =
   | "wealthy_migration"
