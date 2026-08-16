@@ -228,6 +228,8 @@ export const step2Questions: Record<SegmentId, QuestionDef[]> = {
       label: "年齢層を教えてください",
       type: "single",
       options: [
+        { value: "30s", label: "30代" },
+        { value: "40s", label: "40代" },
         { value: "50s", label: "50代" },
         { value: "60s", label: "60代" },
         { value: "70s_plus", label: "70代以上" },
