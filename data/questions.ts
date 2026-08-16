@@ -269,7 +269,8 @@ export const step2Questions: Record<SegmentId, QuestionDef[]> = {
         { value: "under_3m", label: "300万円未満" },
         { value: "3_10m", label: "300万〜1,000万円" },
         { value: "10_30m", label: "1,000万〜3,000万円" },
-        { value: "over_30m", label: "3,000万円以上" },
+        { value: "30_100m", label: "3,000万〜1億円" },
+        { value: "over_100m", label: "1億円以上" },
       ],
     },
     {
