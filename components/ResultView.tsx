@@ -5,6 +5,7 @@ import { DiagnosisResult, SegmentId } from "@/lib/types";
 import { getSegmentById } from "@/data/segments";
 import { CountryResultCard } from "@/components/CountryResultCard";
 import { LeadForm } from "@/components/LeadForm";
+import { buildRecommendationSummary } from "@/lib/summary";
 
 export function ResultView({
   result,
@@ -17,6 +18,8 @@ export function ResultView({
 }) {
   const [showExcluded, setShowExcluded] = useState(result.top3.length === 0);
   const segmentDef = getSegmentById(segment);
+  const topResult = result.top3[0];
+  const summary = topResult ? buildRecommendationSummary(segmentDef, topResult.country) : null;
 
   return (
     <div>
@@ -26,6 +29,27 @@ export function ResultView({
         </p>
         <h2 className="text-2xl font-bold text-slate-900">あなたに合う国 TOP3</h2>
       </div>
+
+      {summary && topResult && (
+        <div className="mb-6 rounded-2xl border border-teal-200 bg-teal-50 px-6 py-5 text-center">
+          <p className="text-base text-teal-900 leading-relaxed">
+            あなたは移住・留学先に
+            <span className="font-bold">「{summary.priorityLabels.join("・")}」</span>
+            を求めています。
+          </p>
+          <p className="mt-2 text-base text-teal-900 leading-relaxed">
+            その条件に合うおすすめの国は、
+            <span className="font-bold">
+              {topResult.country.flagEmoji} {topResult.country.nameJa}
+            </span>
+            です。
+            {summary.strengthLabels.length > 0 && (
+              <>{summary.strengthLabels.join("・")}の評価が特に高く、</>
+            )}
+            {topResult.country.notes}。
+          </p>
+        </div>
+      )}
 
       <div className="mb-6 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-xs text-amber-800">
         本診断のスコアは初期ドラフト値の国マスタに基づく参考情報です。ビザ要件・費用等の正式な数値は今後の一次情報検証により変わる可能性があります。
